@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GradeSheet — Free GPA, Grade &amp; Statistics Calculators for Students</title>
+<meta name="description" content="Free, instant calculators built for students: GPA calculator, weighted grade calculator, statistics calculator, and percentage calculator. No sign-up, no ads in the way.">
+<link rel="canonical" href="https://example.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="28" height="28" rx="6" stroke="#2f6b4f" stroke-width="2"/>
+        <path d="M8 20L13 25L23 9" stroke="#2f6b4f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      GradeSheet
+    </a>
+    <nav class="primary-nav">
+      <a href="index.html" aria-current="page">GPA Calculator</a>
+      <a href="grade-calculator.html">Weighted Grade</a>
+      <a href="statistics-calculator.html">Statistics</a>
+      <a href="percentage-calculator.html">Percentage</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="hero">
+      <span class="eyebrow">Free · No sign-up · Instant results</span>
+      <h1 class="hero-title">Calculate your <span class="underline">GPA</span> in the time it takes to open a spreadsheet.</h1>
+      <p class="hero-sub">Enter your courses, credit hours, and grades below. GradeSheet does the weighting for you — no formulas, no spreadsheet, no login.</p>
+
+      <div class="worksheet">
+        <div class="punch-row"><span></span><span></span><span></span></div>
+        <h2 class="worksheet-title">GPA calculator</h2>
+
+        <div class="row-grid head">
+          <span>Course (optional)</span>
+          <span>Credit hrs</span>
+          <span>Grade</span>
+          <span></span>
+        </div>
+
+        <div id="gpa-rows"></div>
+
+        <div class="actions">
+          <button type="button" class="btn btn-add" id="gpa-add-row">+ Add course</button>
+          <button type="button" class="btn btn-primary" id="gpa-calculate">Calculate GPA</button>
+          <button type="button" class="btn btn-ghost" id="gpa-reset">Reset</button>
+        </div>
+
+        <div class="result-panel" id="gpa-result">
+          <div class="check-stamp-slot"></div>
+          <div class="result-text">
+            <span class="result-value">—</span>
+            <span class="result-label">—</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ad-slot">Ad placeholder — 728×90 leaderboard</div>
+
+    <section>
+      <h2 class="section-title">More calculators</h2>
+      <p class="section-sub">Every tool below works the same way: fill in your numbers, get a straight answer, no clutter.</p>
+
+      <div class="tool-grid">
+        <a class="tool-card" href="grade-calculator.html">
+          <svg class="tool-icon" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span class="card-tag">Weighted average</span>
+          <h3>Weighted Grade Calculator</h3>
+          <p>Combine assignments, exams, and participation by their weight to see your current class grade.</p>
+        </a>
+        <a class="tool-card" href="statistics-calculator.html">
+          <svg class="tool-icon" viewBox="0 0 24 24" fill="none"><path d="M4 20V10M11 20V4M18 20v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span class="card-tag">Mean · median · mode · std dev</span>
+          <h3>Statistics Calculator</h3>
+          <p>Paste a data set and instantly get mean, median, mode, range, variance, and standard deviation.</p>
+        </a>
+        <a class="tool-card" href="percentage-calculator.html">
+          <svg class="tool-icon" viewBox="0 0 24 24" fill="none"><circle cx="7" cy="7" r="3" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="17" r="3" stroke="currentColor" stroke-width="2"/><path d="M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span class="card-tag">Scores · change · of-a-number</span>
+          <h3>Percentage Calculator</h3>
+          <p>Three calculators in one: test scores, percentage change, and "what is X% of Y" — with steps shown.</p>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <h4>Enter your numbers</h4>
+          <p>Add a row for each course, assignment, or data point. Nothing is sent anywhere — it's all calculated in your browser.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <h4>Get an instant result</h4>
+          <p>Every calculator shows the answer the moment you click Calculate, with the method shown underneath.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <h4>Double-check against your syllabus</h4>
+          <p>Grading scales vary by school. Confirm your instructor's exact scale if your GPA needs to be official.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="ad-slot">Ad placeholder — in-content unit</div>
+
+    <section class="explainer">
+      <h2>How is GPA calculated?</h2>
+      <p>Grade point average weighs each course by its credit hours, not just the letter grade. A 4-credit course pulls your average further than a 1-credit course. The formula is:</p>
+      <p><code>GPA = (credit hours × grade points, summed across courses) ÷ total credit hours</code></p>
+      <p>Grade points typically follow a 4.0 scale: A = 4.0, A- = 3.7, B+ = 3.3, B = 3.0, and so on down to F = 0.0. Some schools use a 4.3 or 5.0 scale instead, so check your registrar's grading policy if your GPA needs to match an official transcript.</p>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year"></span> GradeSheet. Calculations run entirely in your browser — nothing you enter is stored or sent anywhere.</span>
+    <span><a href="grade-calculator.html">Grade calculator</a> · <a href="statistics-calculator.html">Statistics</a> · <a href="percentage-calculator.html">Percentage</a></span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  const GRADE_POINTS = {
+    "A": 4.0, "A-": 3.7, "B+": 3.3, "B": 3.0, "B-": 2.7,
+    "C+": 2.3, "C": 2.0, "C-": 1.7, "D+": 1.3, "D": 1.0, "F": 0.0
+  };
+
+  function gradeOptions(selected) {
+    return Object.keys(GRADE_POINTS).map(g =>
+      `<option value="${g}" ${g === selected ? "selected" : ""}>${g}</option>`
+    ).join("");
+  }
+
+  function makeGpaRow(courseVal = "", creditVal = 3, gradeVal = "A") {
+    const row = document.createElement("div");
+    row.className = "row-grid";
+    row.innerHTML = `
+      <input type="text" placeholder="e.g. Calculus I" value="${courseVal}" aria-label="Course name">
+      <input type="number" min="0" step="0.5" value="${creditVal}" aria-label="Credit hours">
+      <select aria-label="Grade">${gradeOptions(gradeVal)}</select>
+      <button type="button" class="remove-row" aria-label="Remove course" title="Remove">×</button>
+    `;
+    return row;
+  }
+
+  const gpaRowsEl = document.getElementById("gpa-rows");
+  const gpaManager = createRowManager(gpaRowsEl, () => makeGpaRow(), 1);
+
+  // seed with three starter rows
+  gpaRowsEl.appendChild(makeGpaRow("", 3, "A"));
+  gpaRowsEl.appendChild(makeGpaRow("", 3, "B+"));
+  gpaRowsEl.appendChild(makeGpaRow("", 4, "A-"));
+
+  document.getElementById("gpa-add-row").addEventListener("click", () => gpaManager.addRow());
+
+  document.getElementById("gpa-reset").addEventListener("click", () => {
+    gpaRowsEl.innerHTML = "";
+    gpaRowsEl.appendChild(makeGpaRow());
+    document.getElementById("gpa-result").classList.remove("is-visible");
+  });
+
+  document.getElementById("gpa-calculate").addEventListener("click", () => {
+    const rows = gpaRowsEl.querySelectorAll(".row-grid");
+    let totalCredits = 0;
+    let totalPoints = 0;
+    const panel = document.getElementById("gpa-result");
+
+    rows.forEach(row => {
+      const credit = parseFloat(row.querySelector('input[type="number"]').value) || 0;
+      const grade = row.querySelector("select").value;
+      totalCredits += credit;
+      totalPoints += credit * GRADE_POINTS[grade];
+    });
+
+    if (totalCredits <= 0) {
+      renderResult(panel, "—", "Add at least one course with credit hours greater than 0.", true);
+      return;
+    }
+
+    const gpa = totalPoints / totalCredits;
+    renderResult(panel, gpa.toFixed(2), `Across ${totalCredits} credit hour${totalCredits === 1 ? "" : "s"}.`, false);
+  });
+</script>
+</body>
+</html>

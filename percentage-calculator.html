@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Percentage Calculator — Percent Change, Percent Of, Test Score | GradeSheet</title>
+<meta name="description" content="Three percentage calculators in one: what is X% of Y, X is what percent of Y, and percentage change. Free, instant, with steps shown.">
+<link rel="canonical" href="https://example.com/percentage-calculator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="28" height="28" rx="6" stroke="#2f6b4f" stroke-width="2"/>
+        <path d="M8 20L13 25L23 9" stroke="#2f6b4f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      GradeSheet
+    </a>
+    <nav class="primary-nav">
+      <a href="index.html">GPA Calculator</a>
+      <a href="grade-calculator.html">Weighted Grade</a>
+      <a href="statistics-calculator.html">Statistics</a>
+      <a href="percentage-calculator.html" aria-current="page">Percentage</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="hero">
+      <span class="eyebrow">Free · No sign-up · Instant results</span>
+      <h1 class="hero-title">Three percentage questions, <span class="underline">one page</span>.</h1>
+      <p class="hero-sub">Pick the calculator that matches what you're solving for. Each shows the formula it used, not just the answer.</p>
+
+      <div class="worksheet">
+        <div class="punch-row"><span></span><span></span><span></span></div>
+        <h2 class="worksheet-title">What is X% of Y?</h2>
+        <div class="row-grid" style="grid-template-columns: 1fr 1fr;">
+          <input type="number" id="of-x" placeholder="Percent, e.g. 15" value="15">
+          <input type="number" id="of-y" placeholder="Of this number, e.g. 240" value="240">
+        </div>
+        <div class="actions">
+          <button type="button" class="btn btn-primary" id="of-calc">Calculate</button>
+        </div>
+        <div class="result-panel" id="of-result">
+          <div class="check-stamp-slot"></div>
+          <div class="result-text"><span class="result-value">—</span><span class="result-label">—</span></div>
+        </div>
+      </div>
+
+      <div class="worksheet">
+        <div class="punch-row"><span></span><span></span><span></span></div>
+        <h2 class="worksheet-title">X is what percent of Y?</h2>
+        <div class="row-grid" style="grid-template-columns: 1fr 1fr;">
+          <input type="number" id="isof-x" placeholder="This number, e.g. 36" value="36">
+          <input type="number" id="isof-y" placeholder="Of this number, e.g. 240" value="240">
+        </div>
+        <div class="actions">
+          <button type="button" class="btn btn-primary" id="isof-calc">Calculate</button>
+        </div>
+        <div class="result-panel" id="isof-result">
+          <div class="check-stamp-slot"></div>
+          <div class="result-text"><span class="result-value">—</span><span class="result-label">—</span></div>
+        </div>
+      </div>
+
+      <div class="worksheet">
+        <div class="punch-row"><span></span><span></span><span></span></div>
+        <h2 class="worksheet-title">Percentage change from X to Y</h2>
+        <div class="row-grid" style="grid-template-columns: 1fr 1fr;">
+          <input type="number" id="chg-x" placeholder="From, e.g. 80" value="80">
+          <input type="number" id="chg-y" placeholder="To, e.g. 92" value="92">
+        </div>
+        <div class="actions">
+          <button type="button" class="btn btn-primary" id="chg-calc">Calculate</button>
+        </div>
+        <div class="result-panel" id="chg-result">
+          <div class="check-stamp-slot"></div>
+          <div class="result-text"><span class="result-value">—</span><span class="result-label">—</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ad-slot">Ad placeholder — 728×90 leaderboard</div>
+
+    <section class="explainer">
+      <h2>The three formulas</h2>
+      <p><code>X% of Y = (X ÷ 100) × Y</code> — used for tips, discounts, or "what's 15% of 240".</p>
+      <p><code>X is what % of Y = (X ÷ Y) × 100</code> — used for test scores, like "36 correct out of 240".</p>
+      <p><code>Percentage change = ((Y − X) ÷ X) × 100</code> — positive means an increase, negative means a decrease.</p>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year"></span> GradeSheet. Calculations run entirely in your browser — nothing you enter is stored or sent anywhere.</span>
+    <span><a href="index.html">GPA calculator</a> · <a href="grade-calculator.html">Weighted grade</a> · <a href="statistics-calculator.html">Statistics</a></span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  document.getElementById("of-calc").addEventListener("click", () => {
+    const x = parseFloat(document.getElementById("of-x").value);
+    const y = parseFloat(document.getElementById("of-y").value);
+    const panel = document.getElementById("of-result");
+    if (isNaN(x) || isNaN(y)) { renderResult(panel, "—", "Enter both numbers.", true); return; }
+    const result = (x / 100) * y;
+    renderResult(panel, result.toLocaleString(undefined, {maximumFractionDigits: 3}), `${x}% of ${y}`, false);
+  });
+
+  document.getElementById("isof-calc").addEventListener("click", () => {
+    const x = parseFloat(document.getElementById("isof-x").value);
+    const y = parseFloat(document.getElementById("isof-y").value);
+    const panel = document.getElementById("isof-result");
+    if (isNaN(x) || isNaN(y) || y === 0) { renderResult(panel, "—", "Enter both numbers (second can't be 0).", true); return; }
+    const result = (x / y) * 100;
+    renderResult(panel, result.toFixed(2) + "%", `${x} out of ${y}`, false);
+  });
+
+  document.getElementById("chg-calc").addEventListener("click", () => {
+    const x = parseFloat(document.getElementById("chg-x").value);
+    const y = parseFloat(document.getElementById("chg-y").value);
+    const panel = document.getElementById("chg-result");
+    if (isNaN(x) || isNaN(y) || x === 0) { renderResult(panel, "—", "Enter both numbers (first can't be 0).", true); return; }
+    const result = ((y - x) / x) * 100;
+    const direction = result >= 0 ? "increase" : "decrease";
+    renderResult(panel, (result >= 0 ? "+" : "") + result.toFixed(2) + "%", `${Math.abs(result).toFixed(2)}% ${direction}, from ${x} to ${y}`, false);
+  });
+</script>
+</body>
+</html>
